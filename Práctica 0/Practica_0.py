@@ -6,12 +6,13 @@
 import matplotlib.pyplot as mpl 
 import numpy
 import sklearn.datasets
+import sklearn.model_selection
 
 # Parte 1
+print("Parte 1:")
 
 # Importamos desde scikit-learn la base de datos de iris
 iris = sklearn.datasets.load_iris()
-print(iris)
 
 # Obtenemos las características (X) y la clase (y)
 X = iris.data
@@ -32,14 +33,38 @@ clases = iris.target_names
 caracteristicas = iris.feature_names
 colores = ['red', 'green', 'blue']
 
-
+# Graficamos cada clase, tomando en cada iteración su color, las características pertenecientes
+# a la clase, y el nombre de dicha clase. Para ello utilizamos la función scatter
 for color, datos_clase, nombre_clase in zip(colores, X, clases):
     mpl.scatter(datos_clase[:,0], datos_clase[:,1], c=color, label=nombre_clase)
+
+# Le indicamos a matplotlib que grafique la leyenda, así como etiquetas en ambos ejes y título
 mpl.legend()
 mpl.xlabel(caracteristicas[-2])
 mpl.ylabel(caracteristicas[-1])
 mpl.title("Parte 1")
 
-mpl.show()
-    
+# Mostramos en pantalla el gráfico
+mpl.show(block=False)
+
+
+# Parte 2
+input("Pulse enter para continuar")
+print("Parte 2:")
+
+# Reiniciamos X a los valores originales
+X = iris.data
+
+X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=.2, stratify=y)
+print("Separación en training y test.")
+print("El conjunto training tiene " + str(len(y_train)) + " elementos, que corresponde al " + str(100*len(y_train)/len(y))+ "% del conjunto")
+print("De la clase 0 hay " + str(numpy.count_nonzero(y_train == 0)))
+print("De la clase 1 hay " + str(numpy.count_nonzero(y_train == 1)))
+print("De la clase 2 hay " + str(numpy.count_nonzero(y_train == 2)))
+
+print(X)
+print(X_test)
+print(y_test)
+print("\n")
+
 
