@@ -58,13 +58,11 @@ X = iris.data
 X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=.2, stratify=y)
 print("Separación en training y test.")
 print("El conjunto training tiene " + str(len(y_train)) + " elementos, que corresponde al " + str(100*len(y_train)/len(y))+ "% del conjunto")
-print("De la clase 0 hay " + str(numpy.count_nonzero(y_train == 0)))
-print("De la clase 1 hay " + str(numpy.count_nonzero(y_train == 1)))
-print("De la clase 2 hay " + str(numpy.count_nonzero(y_train == 2)))
+print("En el conjunto Training hay: ")
+for i in range(3):
+    print("\t" + str(numpy.count_nonzero(y_train == i)) + " elementos de la clase " + clases[i])
 
-print(X)
-print(X_test)
-print(y_test)
+# Parte 3
 print("\n")
 
 
