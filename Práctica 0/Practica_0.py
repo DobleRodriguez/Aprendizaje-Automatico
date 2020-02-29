@@ -56,6 +56,7 @@ print("Parte 2:")
 # de test a 20% (y por ende, training en 80%). Stratify=y hace que se conserve la proporción de 
 # las clases en ambos conjuntos
 X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=.2, stratify=y)
+
 # Se imprime por pantalla en detalle esta división, comprobando la correctitud de las proporciones
 # y las proporciones de clases
 print("Separación en training y test.")
@@ -71,9 +72,11 @@ print("Parte 3:")
 
 # Creamos el intervalo de valores equiespaciados.
 valores = numpy.linspace(0, 2*numpy.pi, 100)
+
 # Definimos una lista de 3 arrays, donde cada uno almacena el resultado de su respectiva 
 # operación para los 100 valores
 trigonometricas = [numpy.sin(valores), numpy.cos(valores), numpy.sin(valores) + numpy.cos(valores)]
+
 # Creamos listas para datos de formato del gráfico y su leyenda"
 formas_linea = ['k--', 'b--', 'r--']
 nombres_func = ['sin(x)', 'cos(x)', 'sin(x) + cos(x)']
