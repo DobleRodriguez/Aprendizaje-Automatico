@@ -78,6 +78,7 @@ while(E(w) > 10 ** -14):
 print(f"b) Toma {min_iters} iteraciones alcanzar u,v tales que E(u,v) = {E(w)} < 1e-14")
 stop()
 print(f"c) Este valor se alcanzó para las coordenadas (u,v) = ({w[0]}, {w[1]})")
+stop()
 
 # 3) Considerar ahora la función  f(x,y) = (x-2)^2 + 2(y+2)^2 + 2sin(2pi*x)sin(2pi*y)
 def f(w):
@@ -115,6 +116,7 @@ def descent_graph(w, lr, grad_func, func, epsilon, max_iters, fmt):
         plt.plot(niter, f(w), fmt)
     plt.xlabel("N° de iteraciones")
     plt.ylabel("f (x,y)")
+    plt.title(f"Gradiente Descendente con tasa de aprendizaje = {lr}")
     plt.show()
 
 
@@ -151,8 +153,9 @@ for w0 in values:
     minimums = np.append(minimums, np.append(w, f(w)))
 minimums = minimums.reshape(4,3)
 
+
 # Imprimimos, de la información almacenada previamente, la tabla de resultados
-print(f"{'x':>20} {'y':>20} {'f(x, y)':>20}")
+print(f"{'x0,y0':>20} {'x':>20} {'y':>20} {'f(x, y)':>20}")
 for i in np.arange(minimums.shape[0]):
-    print(f"{minimums[i,0]:>20} {minimums[i,1]:>20} {minimums[i,2]:>20}")
+    print(f"{np.array2string(values[i]):>20} {minimums[i,0]:>20} {minimums[i,1]:>20} {minimums[i,2]:>20}")
 stop()
