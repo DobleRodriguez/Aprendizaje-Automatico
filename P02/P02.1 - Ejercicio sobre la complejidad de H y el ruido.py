@@ -45,12 +45,11 @@ def stop():
     input("\nPulse ENTER para continuar\n")
 
 # Apartado 1. Dibujar una gráfica con la nube de puntos de salida correspondiente.
-
 #a)
 # Generamos el vector de pares (x,y) a través de simula_unif según los parámetros especificados
 nube_a = simula_unif(50, 2, [-50,50])
 # Los graficamos en forma de nube de puntos
-plt.scatter(nube_a[:,0], nube_a[:,1], c='red')
+plt.scatter(nube_a[:,0], nube_a[:,1])
 plt.title("Nube de puntos con simula_unif")
 plt.xlabel("X")
 plt.ylabel("Y")
@@ -60,7 +59,7 @@ stop()
 #b)
 # Repetimos el procedimiento anterior, pero generando los pares a través de simula_gaus
 nube_b = simula_gaus(50, 2, [5,7])
-plt.scatter(nube_a[:,0], nube_a[:,1], c='blue')
+plt.scatter(nube_b[:,0], nube_b[:,1])
 plt.title("Nube de puntos con simula_gaus")
 plt.xlabel("X")
 plt.ylabel("Y")
@@ -69,13 +68,16 @@ stop()
 
 # Apartado 2. Valorar la influencia del ruido en la selección de la complejidad de la clase de
 # funciones. 
+np.random.seed(1)
 
 def graph_points_frontier(x,y,label,a,b,title):
     for i in np.unique(label):
         plt.scatter(x[label == i], y[label == i], label=i)
     # Graficamos la recta, donde x coincide con los valores de x en el intervalo, e y está determinado
     # por y = ax + b
-    plt.plot(x, a*x + b, label="Recta de separación", c='green')
+    plt.gca().set_ylim(plt.gca().get_ylim())
+    xlist = np.linspace(-50, 50, 1000)
+    plt.plot(xlist, a*xlist + b, label="Recta de separación", c='green')
     # Ajustamos la gráfica para graficar correctamente la línea
     plt.autoscale(axis="x", tight=True)
     # Etiquetamos los ejes y la leyenda
