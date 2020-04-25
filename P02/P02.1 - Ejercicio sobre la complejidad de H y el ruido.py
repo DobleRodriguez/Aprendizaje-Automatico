@@ -44,7 +44,7 @@ def simula_recta(intervalo):
 def stop():
     input("\nPulse ENTER para continuar\n")
 
-# Apartado 1. Dibujar una gráfica con la nube de puntos de salida correspondiente.
+# Apartado 1. Dibujar una gráfica con la nube de puntos de salida correspondiente.~~~~~~~~~~~~~~
 #a)
 # Generamos el vector de pares (x,y) a través de simula_unif según los parámetros especificados
 nube_a = simula_unif(50, 2, [-50,50])
@@ -67,7 +67,7 @@ plt.show()
 stop()
 
 # Apartado 2. Valorar la influencia del ruido en la selección de la complejidad de la clase de
-# funciones. 
+# funciones. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 np.random.seed(1)
 
 def graph_points_frontier(x,y,label,a,b,title):
